@@ -4,6 +4,7 @@ import '../widgets/auth_background.dart';
 import '../widgets/auth_button.dart';
 import '../widgets/auth_text_field.dart';
 import 'sign_screen.dart';
+import '../../../home/presentation/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -29,9 +30,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _login() {
     if (_formKey.currentState!.validate()) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Login successful'),
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const HomeScreen(),
         ),
       );
     }
@@ -139,9 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         const Text(
                           "Don't have an account? ",
-                          style: TextStyle(
-                            fontSize: 12,
-                          ),
+                          style: TextStyle(fontSize: 12),
                         ),
                         GestureDetector(
                           onTap: () {
